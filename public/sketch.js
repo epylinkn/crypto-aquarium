@@ -5,7 +5,7 @@ socket.on('connect', function() {
 
 let counter = 0
 let bg
-let punkFish
+let fish
 let x, y
 let sWidth = 640
 let sHeight = 480
@@ -20,10 +20,10 @@ function preload() {
 
   bg = loadImage('assets/images/bg-aquarium.jpg')
 
-  punkFish = loadAnimation('assets/sprites/punk-fish/idle/a1.png', 'assets/sprites/punk-fish/idle/a8.png');
-  debugger
-  punkFish.width = 50
-  punkFish.height = 50
+  fish = createSprite(0, 0)
+
+  fish.addAnimation('idle', 'assets/sprites/punk-fish/idle/a1.png', 'assets/sprites/punk-fish/idle/a8.png');
+  fish.scale = 0.25
 }
 
 function setup() {
@@ -48,5 +48,23 @@ function draw() {
   image(bg, 0, 0, width, height, x, y - sHeight, 640, 480)
   displayTitle(counter)
 
-  animation(punkFish, 300, 150);
+  if (fish.position.y >= height - 20) {
+    fish.velocity.y = -1
+  }
+
+  if (fish.position.y <= 0 + 20) {
+    fish.velocity.y = 1
+  }
+
+  if (fish.position.x >= width - 50) {
+    fish.velocity.x = -1
+    fish.mirrorX(-1)
+  }
+
+  if (fish.position.x <= 0 + 50) {
+    fish.velocity.x = 1
+    fish.mirrorX(1)
+  }
+
+  drawSprites()
 }
