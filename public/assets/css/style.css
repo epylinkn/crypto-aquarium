@@ -1,0 +1,55 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+.predictions-form {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  text-align: center;
+  font-size: 64px;
+  font-family: Roboto, sans-serif;
+}
+
+.form-group {
+  margin: 10px auto;
+}
+
+label {
+  display: block;
+  width: 100%;
+}
+
+input {
+  display: block;
+  width: 80%;
+  margin: 5% auto;
+  font-size: 64px;
+}
+
+button {
+  display: block;
+  width: 80%;
+  height: 100px;
+  margin: 0 auto;
+  font-size: 64px;
+}
+
+.impressions-form {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  text-align: center;
+  font-size: 64px;
+  font-family: Roboto, sans-serif;
+}
