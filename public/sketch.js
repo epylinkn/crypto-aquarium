@@ -7,9 +7,12 @@ let counter = 0
 let bg
 let fish
 let x, y
-let sWidth = 640
-let sHeight = 480
+let screenWidth = 640
+let screenHeight = 480
 let bgDimensions = [1280, 806]
+
+let tankWidth = 1280
+let tankHeight = 806
 
 function preload() {
   let params = new URLSearchParams(window.location.search)
@@ -42,11 +45,17 @@ function setup() {
   socket.on('testCounter', function(payload) {
     counter = payload
   })
+
+  socket.on('fishUpdated', function(payload) {
+    fish.position.x = payload.x
+    fish.position.y = payload.y
+    fish.velocity.x = payload.vx
+    fish.velocity.y = payload.vy
+  })
 }
 
 function draw() {
-  image(bg, 0, 0, width, height, x, y - sHeight, 640, 480)
-  displayTitle(counter)
+  image(bg, 0, 0, width, height, x, y - screenHeight, 640, 480)
 
   if (fish.position.y >= height - 20) {
     fish.velocity.y = -1
